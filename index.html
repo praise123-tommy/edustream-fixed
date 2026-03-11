@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUSTREAM | Elite Cyber-Academy</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #FFD700; /* Electric Yellow */
+            --bg: #000000;      /* Pure Black */
+            --card: rgba(255, 255, 255, 0.05);
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .heading-font { font-family: 'Syncopate', sans-serif; }
+        
+        /* Persistent Navigation Fix */
+        .master-nav {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover { color: var(--primary) !important; }
+
+        /* Button Styling */
+        .btn-yellow {
+            background-color: var(--primary);
+            color: #000;
+            font-weight: 900;
+            border-radius: 0;
+            text-transform: uppercase;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-yellow:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* View Switching Logic */
+        .page-view { display: none; min-height: 100vh; padding-top: 50px; }
+        .view-active { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Card & Utility */
+        .glass-card {
+            background: var(--card);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.08); }
+
+        .book-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg master-nav">
+    <div class="container">
+        <a class="navbar-brand heading-font text-yellow-400" onclick="showPage('home')">EDUSTREAM</a>
+        <button class="navbar-toggler bg-yellow-400" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+            <ul class="navbar-nav ms-auto gap-4 items-center">
+                <li class="nav-item"><a class="nav-link" onclick="showPage('home')">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showPage('admission')">ADMISSION</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showPage('library')">LIBRARY</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showPage('gallery')">GALLERY</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showPage('events')">EVENTS</a></li>
+                <li class="nav-item"><button class="btn btn-yellow px-4 py-2" onclick="showPage('dashboard')">STUDENT PORTAL</button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="view-home" class="page-view view-active">
+    <header class="container text-center py-20">
+        <h1 class="heading-font text-5xl md:text-8xl mb-6">OWN THE <br><span class="text-yellow-400">FUTURE</span></h1>
+        <p class="text-gray-400 max-w-2xl mx-auto mb-10">Advanced Learning Ecosystem for Computer Science & Tech Pioneers.</p>
+        <button class="btn btn-yellow px-10 py-3" onclick="showPage('admission')">APPLY FOR 2026</button>
+    </header>
+
+    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 py-10">
+        <div class="glass-card"><h3>Elite Faculty</h3><p class="text-gray-500">Learn from full-stack pros.</p></div>
+        <div class="glass-card"><h3>24/7 Labs</h3><p class="text-gray-500">Blockchain & AI infrastructure.</p></div>
+        <div class="glass-card"><h3>Global Reach</h3><p class="text-gray-500">Network with alumni worldwide.</p></div>
+    </section>
+</div>
+
+<div id="view-admission" class="page-view container py-20">
+    <h2 class="heading-font text-yellow-400 text-4xl mb-10">ADMISSION PORTAL</h2>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="p-8 border border-yellow-500/30 bg-white/5">
+                <form onsubmit="alert('Application Sent!'); return false;">
+                    <input type="text" class="w-full bg-black border border-gray-800 p-3 mb-4 text-white" placeholder="Full Name" required>
+                    <input type="email" class="w-full bg-black border border-gray-800 p-3 mb-4 text-white" placeholder="Email Address" required>
+                    <select class="w-full bg-black border border-gray-800 p-3 mb-4 text-white">
+                        <option>Computer Science</option>
+                        <option>Software Engineering</option>
+                    </select>
+                    <button class="btn btn-yellow w-full py-3">Submit Application</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-5 px-10">
+            <h4 class="text-yellow-400 font-bold mb-4">REQUIREMENTS</h4>
+            <ul class="text-gray-500 space-y-2">
+                <li>● 5 O'Level Credits</li>
+                <li>● JAMB Result</li>
+                <li>● ID Verification</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="view-dashboard" class="page-view container py-20">
+    <div class="flex justify-between items-end mb-10">
+        <h2 class="heading-font text-3xl">WELCOME, <span class="text-yellow-400">TOMMY</span></h2>
+        <p class="text-yellow-400 font-bold">GPA: 3.85</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-8">
+            <div class="glass-card">
+                <h5 class="mb-4">Course Progress</h5>
+                <p class="small">Multivariable Calculus - 85%</p>
+                <div class="w-full h-1 bg-gray-800 mb-4"><div class="h-1 bg-yellow-400" style="width: 85%"></div></div>
+                <p class="small">Software Models (SEN 211) - 95%</p>
+                <div class="w-full h-1 bg-gray-800 mb-4"><div class="h-1 bg-yellow-400" style="width: 95%"></div></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-yellow w-full mb-3">Pay School Fees</button>
+            <button class="btn btn-outline-light w-full">Course Registration</button>
+        </div>
+    </div>
+</div>
+
+<div id="view-library" class="page-view container py-20">
+    <h2 class="heading-font text-yellow-400 mb-10 text-4xl text-center">DIGITAL LIBRARY</h2>
+    <div class="row g-4" id="book-grid">
+        </div>
+</div>
+
+<div id="view-gallery" class="page-view container py-20">
+    <h2 class="heading-font text-yellow-400 mb-10">CAMPUS GALLERY</h2>
+    <div class="row g-3">
+        <div class="col-md-4"><img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?w=500" class="w-full h-60 object-cover"></div>
+        <div class="col-md-4"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500" class="w-full h-60 object-cover"></div>
+        <div class="col-md-4"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500" class="w-full h-60 object-cover"></div>
+    </div>
+</div>
+
+<div id="view-events" class="page-view container py-20">
+    <h2 class="heading-font text-yellow-400 mb-10">UPCOMING EVENTS</h2>
+    <div class="glass-card mb-4 d-flex justify-content-between">
+        <div><h4 class="text-white">Tech Expo 2026</h4><p class="text-gray-500">March 25th | Hall B</p></div>
+        <button class="btn btn-yellow btn-sm self-center">REGISTER</button>
+    </div>
+</div>
+
+<footer class="py-10 border-t border-gray-800 mt-20 text-center">
+    <h3 class="heading-font text-yellow-400 mb-4">EDUSTREAM</h3>
+    <p class="text-gray-600 text-sm">© 2026 EDUSTREAM ACADEMY. CREATED BY TOMMY.</p>
+</footer>
+
+<script>
+    // View Switcher
+    function showPage(id) {
+        document.querySelectorAll('.page-view').forEach(view => {
+            view.classList.remove('view-active');
+        });
+        document.getElementById('view-' + id).classList.add('view-active');
+        window.scrollTo(0,0);
+    }
+
+    // Library Data
+    const books = [
+        { name: "Physics", color: "blue" },
+        { name: "Chemistry", color: "green" },
+        { name: "Mathematics", color: "red" },
+        { name: "Biology", color: "orange" },
+        { name: "English", color: "purple" }
+    ];
+
+    const grid = document.getElementById('book-grid');
+    books.forEach(book => {
+        grid.innerHTML += `
+            <div class="col-md-4 mb-4">
+                <div class="glass-card text-center">
+                    <img src="https://placehold.co/400x600/000/FFD700?text=${book.name}" class="book-img mb-4">
+                    <h5 class="text-white">${book.name} Textbook</h5>
+                    <div class="flex gap-2 justify-center mt-4">
+                        <button class="btn btn-sm btn-outline-warning" onclick="alert('Opening Reader...')">READ</button>
+                        <button class="btn btn-sm btn-yellow" onclick="alert('Download Started...')">DOWNLOAD</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
